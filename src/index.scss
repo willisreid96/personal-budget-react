@@ -1,5 +1,11 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
+// SASS Variables
+$primary-color: #4d5791;
+$secondary-color: #b4c6f0;
+$white: #fff;
+$font-family: Tahoma, Arial;
+
 /* Document
    ========================================================================== */
 
@@ -8,20 +14,13 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
- html {
+html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
   }
   
-  /* Sediv.hero {
-    height: 350px;
-    background-color: #b4c6f0;
-    background-image: url('./bg.png');
-    background-size: 400px;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    padding-top: 40px;
-}   ========================================================================== */
+  /* Sections
+     ========================================================================== */
   
   /**
    * Remove the margin in all browsers.
@@ -370,68 +369,85 @@
 
 body {
     font-size: 10px;
-    font-family: Tahoma, Arial;
+    font-family: $font-family;
 }
 
 nav {
     width: 100%;
-    background-color: #4d5791;
+    background-color: $primary-color;
     height: 44px;
     padding: 0 40px;
-}
 
-nav ul,
-nav ul li {
-    margin: 0;
-    padding: 0 ;
-    list-style: none;
-    display: inline-block;
-}
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline-block;
 
-nav ul li a {
-    display: block;
-    padding: 0 20px;
-    line-height: 44px;
-    font-size: 1.4em;
-    text-decoration: none;
-    color: #fff;
-    margin: 0;
-}
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: inline-block;
 
-nav ul li a:hover  {
-    background-color: white;
-    color: #4d5791;
+            a {
+                display: block;
+                padding: 0 20px;
+                line-height: 44px;
+                font-size: 1.4em;
+                text-decoration: none;
+                color: $white;
+                margin: 0;
+
+                &:hover {
+                    background-color: $white;
+                    color: $primary-color;
+                }
+            }
+        }
+    }
 }
 
 div.hero {
     height: 350px;
-    background-color: #b4c6f0;
-    background-image: url('/public/bg.png');
+    background-color: $secondary-color;
+    background-image: url('./bg.png');
     background-size: 400px;
     background-repeat: no-repeat;
     background-position: center bottom;
     padding-top: 40px;
-}
 
-div.hero h1,
-div.hero h2 {
-    text-align: center;
-    margin: 0;
-}
+    h1, h2 {
+        text-align: center;
+        margin: 0;
+    }
 
-div.hero h1 {
-    color: #fff;
-    font-size: 4.2em;
-    margin-bottom: 20px;
-}
+    h1 {
+        color: $white;
+        font-size: 4.2em;
+        margin-bottom: 20px;
+    }
 
-div.hero h2 {
-    color: #4d5791;
+    h2 {
+        color: $primary-color;
+    }
 }
 
 main {
     padding: 40px;
     width: 100%;
+
+    article {
+        display: inline-block;
+        width: 100%;
+        max-width: 340px;
+        text-align: justify;
+        margin: 20px;
+
+        @media screen and (min-width: 768px) {
+            margin: 10px;
+        }
+    }
 }
 
 .page-area {
@@ -441,7 +457,7 @@ main {
 
 footer {
     height: 50px;
-    background-color: #b4c6f0;
+    background-color: $secondary-color;
     padding: 40px;
 }
 
@@ -450,44 +466,38 @@ footer {
     line-height: 44px;
     padding: 0 20px;
     margin-top: -44px;
-}
 
-.skip:focus {
-    margin-top: 0;
+    &:focus {
+        margin-top: 0;
+    }
 }
 
 .center {
     text-align: center;
 }
 
-main article {
-    display: inline-block;
-    width: 100%;
-    max-width: 340px;
-    text-align: justify;
-    margin: 20px;
-}
 #d3-donut {
-  font: 10px sans-serif;
-  text-align: center;
-}
-#d3-donut svg {
-  overflow: visible;
-}
-#d3-donut .labels text {
-  fill: #111;
-  font: 13px/1.2 sans-serif;
-}
-#d3-donut .lines polyline {
-  stroke: #999;
-  stroke-width: 2;
-  fill: none;
-  opacity: .6;
-}
+    font: 10px sans-serif;
+    text-align: center;
 
-
-@media screen and (min-width: 768px) {
-    main article {
-        margin: 10px;
+    svg {
+        overflow: visible;
     }
+
+    .arc {
+        cursor: pointer;
+    }
+
+    text {
+        fill: #333;
+        font: 11px sans-serif;
+        font-weight: bold;
+    }
+    #myChart, #myDonutChart {
+        display: block;
+        margin: 0 auto;
+        height: auto;
+        max-width: 100%; /* ensures responsiveness */
+    }
+    
 } 
